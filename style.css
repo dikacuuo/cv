@@ -1,0 +1,234 @@
+/* GANTI WARNA TEMA di sini (merah utama, merah tua, dan merah muda) */
+:root {
+  --merah: #a31621;
+  --merah-tua: #7d0f19;
+  --merah-muda: #f6e3e4;
+  --kertas: #fbf8f8;
+  --tinta: #221c1d;
+  --abu: #6b6264;
+  --putih: #ffffff;
+
+  --font-judul: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+  --font-isi: "Public Sans", "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-isi);
+  color: var(--tinta);
+  background: #e9e3e3;
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+a {
+  color: inherit;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--putih);
+  outline-offset: 3px;
+}
+
+/* Lembar CV */
+.cv {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  max-width: 900px;
+  min-height: 1000px;
+  margin: 0 auto;
+  background: var(--kertas);
+  box-shadow: 0 8px 30px rgba(34, 28, 29, 0.18);
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--merah);
+  color: var(--putih);
+  padding: 2.5rem 1.75rem;
+}
+
+.foto {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 2.5rem;
+  border-radius: 50%;
+  border: 5px solid var(--putih);
+  background: var(--merah-tua);
+  overflow: hidden;
+}
+
+.foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inisial {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-judul);
+  font-size: 3.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.blok + .blok {
+  margin-top: 2rem;
+}
+
+.sidebar h2 {
+  font-family: var(--font-judul);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.sidebar dt {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.8rem;
+}
+
+.sidebar dt:first-child {
+  margin-top: 0;
+}
+
+.sidebar dd {
+  font-size: 0.95rem;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+/* Konten utama */
+.konten {
+  padding: 2.75rem 2.5rem;
+}
+
+.kepala {
+  margin-bottom: 2.25rem;
+}
+
+.kepala h1 {
+  font-family: var(--font-judul);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--merah);
+}
+
+.julukan {
+  margin-top: 0.6rem;
+  font-size: 1.05rem;
+  color: var(--abu);
+}
+
+.bagian + .bagian {
+  margin-top: 2rem;
+}
+
+.bagian h2 {
+  font-family: var(--font-judul);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--merah);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.9rem;
+  border-bottom: 2px solid var(--merah-muda);
+}
+
+.bagian p {
+  max-width: 60ch;
+}
+
+.item h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.item p {
+  color: var(--abu);
+  font-size: 0.95rem;
+}
+
+.keahlian {
+  list-style: none;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.keahlian li {
+  font-weight: 500;
+  padding-left: 1rem;
+  border-left: 4px solid var(--merah);
+}
+
+.keahlian strong {
+  display: block;
+  font-weight: 600;
+}
+
+.keahlian span {
+  color: var(--abu);
+  font-size: 0.95rem;
+}
+
+/* Layar kecil (HP) */
+@media (max-width: 720px) {
+  body {
+    padding: 0;
+  }
+
+  .cv {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    padding: 2rem 1.5rem;
+  }
+
+  .konten {
+    padding: 2rem 1.5rem;
+  }
+
+  .kepala h1 {
+    font-size: 2rem;
+  }
+}
+
+/* Cetak / simpan PDF (A4) */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    background: none;
+    padding: 0;
+  }
+
+  .cv {
+    width: 210mm;
+    min-height: 297mm;
+    max-width: none;
+    box-shadow: none;
+    grid-template-columns: 70mm 1fr;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
